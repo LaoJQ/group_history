@@ -25,9 +25,9 @@
 -define(DEFAULT_HISTORY_FILE, "erlang-shell-log").
 -define(MAX_HISTORY_FILES, 10).
 -define(DEFAULT_SIZE, 1024*512). % 512 kb total default
--define(DEFAULT_STATUS, disabled).
+-define(DEFAULT_STATUS, enabled).
 -define(MIN_HISTORY_SIZE, (50*1024)). % 50 kb, in bytes
--define(DEFAULT_DROP, []).
+-define(DEFAULT_DROP, ["q().","init:stop().","halt()."]).
 -define(DISK_LOG_FORMAT, internal). % since we want repairs
 -define(LOG_NAME, '$#group_history').
 -define(VSN, {0,1,0}).
@@ -151,7 +151,7 @@ open_log() ->
 %% Return logger options
 log_options() ->
     Path = find_path(),
-    File = filename:join([Path, ?DEFAULT_HISTORY_FILE]),
+    File = filename:join([Path, erlang:atom_to_list(node()) ++ "_" ++ ?DEFAULT_HISTORY_FILE]),
     Size = find_wrap_values(),
     [{name, ?LOG_NAME},
      {file, File},
