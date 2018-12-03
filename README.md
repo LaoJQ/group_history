@@ -8,4 +8,4 @@ Use erlc to compile group_history.erl, and then copy the beam file into erlang i
 
 ## vsn
 
-Copy from erlang-20.2.
+Copy from erlang-21.1.
