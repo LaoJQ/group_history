@@ -18,4 +18,5 @@ cp group_history.erl $erl_kernel_bin/
 
 otp-21.1
 otp-22.3
+otp-23.0
 
